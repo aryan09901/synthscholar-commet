@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SynthScholar - AI Research Podcaster</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>🎧 SynthScholar</h1>
+                <p class="subtitle">Transform Research into Podcasts with COMET AI</p>
+            </div>
+            <div class="demo-badge">
+                <span class="badge">HACKATHON DEMO</span>
+            </div>
+        </header>
+
+        <main>
+            <!-- Welcome Card -->
+            <div class="card welcome-card">
+                <h2>🎯 Welcome to SynthScholar</h2>
+                <p>Enter any research topic below, and we'll use <strong>Perplexity COMET</strong> to research it and create an engaging podcast episode for you!</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <span class="icon">🔍</span>
+                        <span>COMET AI Research</span>
+                    </div>
+                    <div class="feature">
+                        <span class="icon">✍️</span>
+                        <span>Smart Synthesis</span>
+                    </div>
+                    <div class="feature">
+                        <span class="icon">🎧</span>
+                        <span>Professional Audio</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo Topics -->
+            <div class="card demo-topics-card">
+                <h3>🚀 Try These Demo Topics</h3>
+                <div class="demo-topics" id="demoTopics">
+                    <button class="demo-topic" data-topic="artificial intelligence">
+                        <span class="topic-icon">🤖</span>
+                        <span class="topic-text">Artificial Intelligence</span>
+                    </button>
+                    <button class="demo-topic" data-topic="climate change">
+                        <span class="topic-icon">🌍</span>
+                        <span class="topic-text">Climate Change</span>
+                    </button>
+                    <button class="demo-topic" data-topic="quantum computing">
+                        <span class="topic-icon">⚛️</span>
+                        <span class="topic-text">Quantum Computing</span>
+                    </button>
+                    <button class="demo-topic" data-topic="renewable energy">
+                        <span class="topic-icon">⚡</span>
+                        <span class="topic-text">Renewable Energy</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Research Form -->
+            <div class="card research-card">
+                <h2>🔬 Start Your Research</h2>
+                <form id="researchForm">
+                    <div class="input-group">
+                        <label for="topic">Research Topic:</label>
+                        <textarea 
+                            id="topic" 
+                            name="topic" 
+                            placeholder="e.g., 'The impact of artificial intelligence on education', 'Quantum computing breakthroughs', 'Sustainable energy solutions'"
+                            required
+                            rows="3"
+                        ></textarea>
+                        <div class="char-count">
+                            <span id="charCount">0</span> characters
+                        </div>
+                    </div>
+                    
+                    <button type="submit" id="generateBtn" class="btn-primary">
+                        <span class="btn-text">🎧 Generate Research Podcast</span>
+                        <span class="btn-loading" style="display: none;">
+                            <span class="spinner"></span>
+                            Researching with COMET AI...
+                        </span>
+                    </button>
+                </form>
+
+                <div class="demo-note">
+                    <p>💡 <strong>Demo Mode:</strong> Using pre-researched data for reliable demonstration. 
+                    In production, this uses real-time COMET browser automation.</p>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="result" class="card result-card" style="display: none;">
+                <div class="result-header">
+                    <h2>✅ Your Research Podcast is Ready!</h2>
+                    <div class="success-badge">Generated Successfully</div>
+                </div>
+                
+                <div class="result-content">
+                    <div class="audio-section">
+                        <h3>🎧 Listen to Your Podcast</h3>
+                        <div class="audio-player">
+                            <audio id="audioPlayer" controls style="width: 100%;">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                    </div>
+
+                    <div class="script-section">
+                        <h3>📝 Script Preview</h3>
+                        <div class="script-preview">
+                            <p id="scriptPreview"></p>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <a id="downloadBtn" class="btn-secondary" download>
+                            📥 Download Podcast
+                        </a>
+                        <button id="newResearchBtn" class="btn-outline">
+                            🔄 Create Another Podcast
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Section -->
+            <div id="error" class="card error-card" style="display: none;">
+                <div class="error-header">
+                    <h2>❌ Something went wrong</h2>
+                </div>
+                <p id="errorMessage"></p>
+                <button id="retryBtn" class="btn-outline">🔄 Try Again</button>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <p>Built with ❤️ for the Perplexity COMET Hackathon</p>
+                <p class="tech-stack">Powered by COMET Browser Automation • OpenAI • Flask • Web Automation</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
